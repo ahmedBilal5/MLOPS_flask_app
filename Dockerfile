@@ -13,10 +13,9 @@ COPY Makefile ./Makefile
 COPY train.csv ./train.csv
 COPY test.csv ./test.csv
 COPY train.py ./train.py
-COPY inference.py ./inference.py
+COPY inference_flask.py ./app.py
 # Installation of the dependecies
 RUN make install
 # training is executed while creating the docker image and the trained models are stored in the my-model directory
-RUN python3 train.py  && python3 inference.py
-ENTRYPOINT ["/bin/bash"]
-
+RUN python3 train.py
+CMD [ "flask", "run","--host","0.0.0.0","--port","5000"]
