@@ -16,6 +16,7 @@ import pandas as pd
 from joblib import dump
 from sklearn import preprocessing
 
+print("this is the train file")
 def train():
 
     # Load directory paths for persisting model
